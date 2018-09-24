@@ -14,18 +14,19 @@ function displayMarvel() {
         for (i = 0; i< response.data.length; i++) {
             var src = response.data[i].images.fixed_height.url;
             var a = $("<img>");
-    
             a.attr("src", src);
             console.log(src);
             $("#marvel-view").append(a);
+
  
         }
-        // code start here for display image
+        
        
     });
 
 }
 // var qString = prompt("term");
+
 
 function giphyButton() {
     $("#marvel").empty();
@@ -35,6 +36,8 @@ function giphyButton() {
         man.attr("data-name", giphy[i]);
         man.text(giphy[i]);
         $("#marvel").append(man);
+        
+
     }
 }
 
