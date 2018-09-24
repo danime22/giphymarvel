@@ -12,7 +12,7 @@ function displayMarvel() {
         $("#marvel-view").empty();
         // $("#marvel-view").text(JSON.stringify(response));
         for (i = 0; i< response.data.length; i++) {
-            var src = response.data[i].images.fixed_height_still.url;
+            var src = response.data[i].images.fixed_height.url;
             var a = $("<img>");
     
             a.attr("src", src);
