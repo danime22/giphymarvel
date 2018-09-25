@@ -20,6 +20,7 @@ body {
 #marvel {
     margin: 4%;
     text-align: center; 
+    
 
 }
 
@@ -28,7 +29,17 @@ button {
     background-color: #EA3B3B;
     color: white;
     height: 40px;
-    border-radius: 5%;
+ 
+}
+
+#giphy {
+    margin: 4px;
+}
+
+#marvel :hover {
+    animation: roll 3s infinite;
+    transform: rotate(30deg);
+    transition: all 1s;
     
 }
 
@@ -38,3 +49,24 @@ button {
     color: white;
     margin-left: 10%;
 }
+
+.image {
+    height: 200px;
+    width: 300px;
+}
+
+label {
+    font-weight: bold;
+    font-size: 20px;
+}
+
+#giphy-input {
+    border: 2px solid #EA3B3B;
+    box-shadow: 5px 5px 5px  red;
+    
+}
+#add-giphy {
+      border: 2px solid #EA3B3B;
+    box-shadow: 5px 5px 5px  red;
+}
+

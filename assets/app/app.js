@@ -11,7 +11,7 @@ function displayImages() {
     }).then(function (response) {
 
         rating = response.data[0].rating;
-        slug = response.data[0].title;
+        title = response.data[0].title;
 
         $("#marvel-view").empty();
         for (i = 0; i < response.data.length; i++) {
@@ -25,7 +25,7 @@ function displayImages() {
             $("#marvel-view").append(a);
             var v = $("<p>").text("Rating: " + rating);
             $("#marvel-view").append(v);
-            var z = $("<p>").text("Name: " + slug);
+            var z = $("<p>").text("Name: " + title);
             $("#marvel-view").append(z);
 
         }
