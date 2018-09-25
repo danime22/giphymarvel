@@ -25,11 +25,12 @@ body {
 }
 
 button {
-    border: 2px solid black;
+    /* border: 2px solid black; */
     background-color: #EA3B3B;
     color: white;
     height: 40px;
     box-shadow: 5px 5px 5px  #D46A6A;
+   
  
 }
 
@@ -38,8 +39,11 @@ button {
 }
 
 #marvel .giphy {
-    border-radius: 5px;
+    border-radius: 7px;
     margin: 2px;
+    font-family: 'Playfair Display SC', serif;
+    letter-spacing: 2px; 
+    font-size: 18px;
 }
 
 #marvel :hover {
@@ -55,6 +59,11 @@ button {
     background-color: #EA3B3B;
     color: white;
     margin-left: 10%;
+    border-radius: 7px;
+    margin: 2px;
+    font-family: 'Playfair Display SC', serif;
+    letter-spacing: 2px; 
+    font-size: 15px;
 }
 
 .image {
@@ -65,11 +74,14 @@ button {
 label {
     font-weight: bold;
     font-size: 20px;
+    font-family: 'Abril Fatface', cursive;
 }
 
 #giphy-input {
     border: 2px solid #EA3B3B;
     box-shadow: 5px 5px 5px  #D46A6A;
+    border-radius: 8px;
+    height: 40px;
     
 }
 #add-giphy {
