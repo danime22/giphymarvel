@@ -5,7 +5,7 @@ body {
 }
 
 .row {
-    border: 1px solid blue;
+   
     background-image: url("../images/thumb-1920-668689.jpg");
 }
 
@@ -24,9 +24,17 @@ body {
 }
 
 button {
-    border: 1px solid black;
+    border: 3px solid black;
     background-color: #EA3B3B;
     color: white;
     height: 40px;
+    border-radius: 5%;
     
+}
+
+
+#add-giphy {
+    background-color: #EA3B3B;
+    color: white;
+    margin-left: 10%;
 }
