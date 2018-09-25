@@ -5,11 +5,14 @@ function displayImages() {
     var marvel = $(this).attr("data-name");
     var queryURL = "https://api.giphy.com/v1/gifs/search?q=" + marvel + "&api_key=l4iAli7gESZ6f4rQ7sblfPH6hEHgf4wH&limit=10&rating=g";
 
-    // queryURL += giphy;
     $.ajax({
         url: queryURL,
         method: "GET"
     }).then(function (response) {
+
+        rating = response.data[0].rating;
+        slug = response.data[0].title;
+
         $("#marvel-view").empty();
         for (i = 0; i < response.data.length; i++) {
             var src = response.data[i].images.fixed_height_still.url;
@@ -20,6 +23,11 @@ function displayImages() {
             a.attr("data-other", animate);
             console.log(src);
             $("#marvel-view").append(a);
+            var v = $("<p>").text("Rating: " + rating);
+            $("#marvel-view").append(v);
+            var z = $("<p>").text("Name: " + slug);
+            $("#marvel-view").append(z);
+
         }
 
 
