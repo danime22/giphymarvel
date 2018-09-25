@@ -9,21 +9,24 @@ body {
     background-image: url("../images/thumb-1920-668689.jpg");
 }
 
-/* .col-lg {
-    border: 4px solid red;
-    /* background-image: url("../images/4989554-usa-wallpaper (1).jpg"); */
- 
-
-/* .card-header {
-    background-image: url("../images/thumb-1920-532651.jpg");
-    background-position: center;
-    background-size: cover;
-   
-} */
 
 .card-body {
     background-image: url("../images/thumb-1920-532651.jpg");
     background-position: center;
     background-size: cover;
    
+}
+
+#marvel {
+    margin: 4%;
+    text-align: center; 
+
+}
+
+button {
+    border: 1px solid black;
+    background-color: #EA3B3B;
+    color: white;
+    height: 40px;
+    
 }

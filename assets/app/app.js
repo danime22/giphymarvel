@@ -1,42 +1,51 @@
-var giphy = ["Iron Man", "Captain America", "Doctor Strange", "Thor", "Spiderman"];
-function displayMarvel() {
+var searchStrings = ["Iron Man", "Captain America", "Doctor Strange", "Thor", "Spiderman"];
+
+function displayImages() {
 
     var marvel = $(this).attr("data-name");
     var queryURL = "https://api.giphy.com/v1/gifs/search?q=" + marvel + "&api_key=l4iAli7gESZ6f4rQ7sblfPH6hEHgf4wH&limit=10&rating=g";
-    
+
     // queryURL += giphy;
     $.ajax({
         url: queryURL,
         method: "GET"
     }).then(function (response) {
         $("#marvel-view").empty();
-        // $("#marvel-view").text(JSON.stringify(response));
-        for (i = 0; i< response.data.length; i++) {
-            var src = response.data[i].images.fixed_height.url;
+        for (i = 0; i < response.data.length; i++) {
+            var src = response.data[i].images.fixed_height_still.url;
+            var animate = response.data[i].images.fixed_height.url;
             var a = $("<img>");
+            a.addClass("image");
             a.attr("src", src);
+            a.attr("data-other", animate);
             console.log(src);
             $("#marvel-view").append(a);
-
- 
         }
-        
-       
+
+
     });
 
 }
-// var qString = prompt("term");
+
+function swapImages() {
+    var src = $(this).attr("src");
+    var newSrc = $(this).attr("data-other");
+    $(this).attr("src", newSrc);
+    $(this).attr("data-other", src);
+}
 
 
-function giphyButton() {
+
+
+function renderButtons() {
     $("#marvel").empty();
-    for (i = 0; i < giphy.length; i++) {
+    for (i = 0; i < searchStrings.length; i++) {
         man = $("<button>");
         man.addClass("giphy");
-        man.attr("data-name", giphy[i]);
-        man.text(giphy[i]);
+        man.attr("data-name", searchStrings[i]);
+        man.text(searchStrings[i]);
         $("#marvel").append(man);
-        
+
 
     }
 }
@@ -45,12 +54,15 @@ function giphyButton() {
 $("#add-giphy").on("click", function (event) {
     event.preventDefault();
     var gph = $("#giphy-input").val().trim();
-    giphy.push(gph);
-    console.log(giphy);
+    $("#giphy-input").val("");
+    searchStrings.push(gph);
+    console.log(searchStrings);
 
-    giphyButton();
+    renderButtons();
 });
 
-$(document).on("click", ".giphy", displayMarvel);
+$(document).on("click", ".giphy", displayImages);
+$("body").on("click", ".image", swapImages);
 
-giphyButton();
+renderButtons();
+
