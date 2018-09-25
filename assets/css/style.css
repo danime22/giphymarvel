@@ -25,10 +25,11 @@ body {
 }
 
 button {
-    border: 3px solid black;
+    border: 2px solid black;
     background-color: #EA3B3B;
     color: white;
     height: 40px;
+    box-shadow: 5px 5px 5px  #D46A6A;
  
 }
 
@@ -36,10 +37,16 @@ button {
     margin: 4px;
 }
 
+#marvel .giphy {
+    border-radius: 5px;
+    margin: 2px;
+}
+
 #marvel :hover {
     animation: roll 3s infinite;
     transform: rotate(30deg);
     transition: all 1s;
+    
     
 }
 
@@ -62,11 +69,11 @@ label {
 
 #giphy-input {
     border: 2px solid #EA3B3B;
-    box-shadow: 5px 5px 5px  red;
+    box-shadow: 5px 5px 5px  #D46A6A;
     
 }
 #add-giphy {
       border: 2px solid #EA3B3B;
-    box-shadow: 5px 5px 5px  red;
+    box-shadow: 5px 5px 5px  #D46A6A;
 }
 

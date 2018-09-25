@@ -65,6 +65,7 @@ $("#add-giphy").on("click", function (event) {
     $("#giphy-input").val("");
     searchStrings.push(gph);
     console.log(searchStrings);
+    
 
     renderButtons();
 });
