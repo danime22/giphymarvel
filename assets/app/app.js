@@ -17,19 +17,37 @@ function displayImages() {
         for (i = 0; i < response.data.length; i++) {
             var src = response.data[i].images.fixed_height_still.url;
             var animate = response.data[i].images.fixed_height.url;
+            // var a = $("<img>");
+            // a.addClass("image");
+            // a.attr("src", src);
+            // a.attr("data-other", animate);
+            // console.log(src);
+            // $("#marvel-view").append(a);
+            // var v = $("<p>").text("Rating: " + rating);
+            // $("#marvel-view").append(v);
+            // var z = $("<p>").text("Name: " + title);
+            // $("#marvel-view").append(z);
+            var x = $("<button>");
+            x.addClass("favorite");
+            x.text("Add Favorite");
+
+
+
+            var b = $("<div>");
+            b.addClass("divide");
             var a = $("<img>");
             a.addClass("image");
             a.attr("src", src);
             a.attr("data-other", animate);
-            console.log(src);
-            $("#marvel-view").append(a);
+            $("#marvel-view").append(b);
+            b.append(a);
             var v = $("<p>").text("Rating: " + rating);
-            $("#marvel-view").append(v);
+            b.append(v);
             var z = $("<p>").text("Name: " + title);
-            $("#marvel-view").append(z);
+            b.append(z);
+            b.append(x);
 
         }
-
 
     });
 
@@ -43,8 +61,6 @@ function swapImages() {
 }
 
 
-
-
 function renderButtons() {
     $("#marvel").empty();
     for (i = 0; i < searchStrings.length; i++) {
@@ -53,8 +69,6 @@ function renderButtons() {
         man.attr("data-name", searchStrings[i]);
         man.text(searchStrings[i]);
         $("#marvel").append(man);
-
-
     }
 }
 
@@ -65,7 +79,7 @@ $("#add-giphy").on("click", function (event) {
     $("#giphy-input").val("");
     searchStrings.push(gph);
     console.log(searchStrings);
-    
+
 
     renderButtons();
 });

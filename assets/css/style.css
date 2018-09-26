@@ -74,8 +74,10 @@ button {
     border-radius: 5px;
     float: left;
     margin: 5px;
+    box-shadow: 5px 5px 5px  #D46A6A;
 
 }
+
 
 label {
     font-weight: bold;
@@ -88,9 +90,28 @@ label {
     box-shadow: 5px 5px 5px  #D46A6A;
     border-radius: 8px;
     height: 40px;
+    width: 300px;
     
 }
 #add-giphy {
       border: 2px solid #EA3B3B;
     box-shadow: 5px 5px 5px  #D46A6A;
+}
+
+
+p {
+    display: block;
+}
+
+div.divide {
+    vertical-align: top;
+    display: inline-block;
+
+}
+
+.favorite {
+    height: 30px;
+    width: 136px;
+    background-color: azure;
+    color:black;
 }
