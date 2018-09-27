@@ -49,9 +49,17 @@ function displayImages() {
 
         }
 
+        $(".favorite").on("click", function () {
+            $(".favorite").css("background-color", "yellow");
+        });
+
+
     });
 
 }
+
+
+
 
 function swapImages() {
     var src = $(this).attr("src");
