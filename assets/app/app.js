@@ -1,4 +1,5 @@
 var searchStrings = ["Iron Man", "Captain America", "Doctor Strange", "Thor", "Spiderman"];
+var favorites = [];
 
 function displayImages() {
 
@@ -10,47 +11,36 @@ function displayImages() {
         method: "GET"
     }).then(function (response) {
 
-        rating = response.data[0].rating;
-        title = response.data[0].title;
+
 
         $("#marvel-view").empty();
         for (i = 0; i < response.data.length; i++) {
             var src = response.data[i].images.fixed_height_still.url;
             var animate = response.data[i].images.fixed_height.url;
-            // var a = $("<img>");
-            // a.addClass("image");
-            // a.attr("src", src);
-            // a.attr("data-other", animate);
-            // console.log(src);
-            // $("#marvel-view").append(a);
-            // var v = $("<p>").text("Rating: " + rating);
-            // $("#marvel-view").append(v);
-            // var z = $("<p>").text("Name: " + title);
-            // $("#marvel-view").append(z);
-            var x = $("<button>");
-            x.addClass("favorite");
-            x.text("Add Favorite");
+            var rating = response.data[i].rating;
+            var title = response.data[i].title;
 
-
-
-            var b = $("<div>");
-            b.addClass("divide");
-            var a = $("<img>");
-            a.addClass("image");
-            a.attr("src", src);
-            a.attr("data-other", animate);
-            $("#marvel-view").append(b);
-            b.append(a);
-            var v = $("<p>").text("Rating: " + rating);
-            b.append(v);
-            var z = $("<p>").text("Name: " + title);
-            b.append(z);
-            b.append(x);
-
+            $("#marvel-view").append(getImageDiv(src, animate, rating, title));
         }
 
         $(".favorite").on("click", function () {
-            $(".favorite").css("background-color", "yellow");
+            $(this).css("background-color", "yellow");
+            $(this).text("Added");
+
+            var newFav = {
+                still: "",
+                moving: ""
+            }
+
+            newFav.still = $(this).attr("data-still");
+            newFav.moving = $(this).attr("data-moving");
+
+            favorites.push(newFav);
+
+            localStorage.setItem("favorites", JSON.stringify(favorites));
+
+
+            displayFavorites();
         });
 
 
@@ -58,14 +48,64 @@ function displayImages() {
 
 }
 
+function getImageDiv(still, animate, rating, title) {
+    var div = $("<div>");
+    div.addClass("divide");
+    div.append(getImageTag(still, animate));
+    div.append($("<p>").text("Rating: " + rating));
+    div.append($("<p>").text("Name: " + title));
+    div.append(getFavButton(still, animate));
 
+    return div;
+}
+
+function getFavButton(still, animate) {
+    var but = $("<button>");
+    but.attr("data-still", still);
+    but.attr("data-moving", animate);
+    but.addClass("favorite");
+    but.text("Add Favorite");
+
+    return but;
+}
+
+function getImageTag(still, animate) {
+    var a = $("<img>");
+    a.addClass("image");
+    a.attr("src", still);
+    a.attr("data-other", animate);
+
+    return a;
+}
+
+function displayFavorites() {
+    favorites = JSON.parse(localStorage.getItem("favorites"));
+
+    $("#favorite-view").empty();
+
+    for (i = 0; i < favorites.length; i++) {
+        var img = getImageTag(favorites[i].still, favorites[i].moving);
+
+        $("#favorite-view").append(img);
+
+    }
+}
+
+function clearFavorites() {
+    $("#favorite-view").empty();
+
+    localStorage.setItem("favorites", JSON.stringify([]));
+}
 
 
 function swapImages() {
+
     var src = $(this).attr("src");
     var newSrc = $(this).attr("data-other");
     $(this).attr("src", newSrc);
     $(this).attr("data-other", src);
+
+    console.log("swap " + src + "/" + newSrc);
 }
 
 
@@ -94,6 +134,8 @@ $("#add-giphy").on("click", function (event) {
 
 $(document).on("click", ".giphy", displayImages);
 $("body").on("click", ".image", swapImages);
+$("body").on("click", "H1", clearFavorites);
 
 renderButtons();
+displayFavorites();
 
