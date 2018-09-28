@@ -21,11 +21,16 @@ function displayImages() {
             var title = response.data[i].title;
 
             $("#marvel-view").append(getImageDiv(src, animate, rating, title));
+
+            
         }
 
         $(".favorite").on("click", function () {
-            $(this).css("background-color", "yellow");
+            $(this).css("background-color", "#EA3B3B");
+            $(this).css("color", "white");
             $(this).text("Added");
+            $("#favButton").show();
+            $("span").show();
 
             var newFav = {
                 still: "",
@@ -138,4 +143,10 @@ $("body").on("click", "H1", clearFavorites);
 
 renderButtons();
 displayFavorites();
+
+$("#favButton").on("click", function(){
+    clearFavorites(); 
+
+})
+
 
