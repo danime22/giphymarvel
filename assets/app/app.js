@@ -1,5 +1,16 @@
 var searchStrings = ["Iron Man", "Captain America", "Doctor Strange", "Thor", "Spiderman"];
 var favorites = [];
+const KEY = "favorites";
+
+function initializeLocalStorage() {
+    favorites = JSON.parse(localStorage.getItem(KEY));
+
+    if(favorites == null){
+        localStorage.setItem(KEY, JSON.stringify(favorites));
+        favorites = [];
+    }
+}
+
 
 function displayImages() {
 
@@ -41,7 +52,7 @@ function displayImages() {
 
             favorites.push(newFav);
 
-            localStorage.setItem("favorites", JSON.stringify(favorites));
+            localStorage.setItem(KEY, JSON.stringify(favorites));
 
 
             displayFavorites();
@@ -83,8 +94,6 @@ function getImageTag(still, animate) {
 }
 
 function displayFavorites() {
-    favorites = JSON.parse(localStorage.getItem("favorites"));
-
     $("#favorite-view").empty();
 
     for (i = 0; i < favorites.length; i++) {
@@ -103,7 +112,7 @@ function displayFavorites() {
 function clearFavorites() {
     $("#favorite-view").empty();
 
-    localStorage.setItem("favorites", JSON.stringify([]));
+    localStorage.setItem(KEY, JSON.stringify([]));
 }
 
 
@@ -141,16 +150,20 @@ $("#add-giphy").on("click", function (event) {
     renderButtons();
 });
 
-$(document).on("click", ".giphy", displayImages);
-$("body").on("click", ".image", swapImages);
-$("body").on("click", "H1", clearFavorites);
-
-renderButtons();
-displayFavorites();
-
 $("#favButton").on("click", function(){
     clearFavorites(); 
 
 })
+
+$(document).on("click", ".giphy", displayImages);
+$("body").on("click", ".image", swapImages);
+$("body").on("click", "H1", clearFavorites);
+
+
+initializeLocalStorage();
+renderButtons();
+displayFavorites();
+
+
 
 
