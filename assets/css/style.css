@@ -1,6 +1,7 @@
 body {
     background-image: url("../images/thumb-1920-486042.jpg");
     /* background-repeat: no-repeat; */
+    /* background-size: 200%; */
 
 }
 
@@ -67,12 +68,12 @@ button {
 }
 
 .image {
-    height: 200px;
+    height: 224px;
     width: 300px;
     border: 2px solid #801515;
     padding: 1px;
     border-radius: 5px;
-    margin: 5px;
+    margin: 22px;
     box-shadow: 5px 5px 5px  #D46A6A;
 
 }
@@ -109,6 +110,13 @@ p {
 div.divide {
     vertical-align: top;
     display: inline-block;
+    border:2px solid #231858;
+    height: 418px;
+    width: 350px;
+    border-radius: 5px;
+    margin: 5px;
+    margin-left: 12px;
+
 
 }
 

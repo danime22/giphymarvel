@@ -29,8 +29,7 @@ function displayImages() {
             $(this).css("background-color", "#EA3B3B");
             $(this).css("color", "white");
             $(this).text("Added");
-            $("#favButton").show();
-            $("span").show();
+            
 
             var newFav = {
                 still: "",
@@ -93,6 +92,11 @@ function displayFavorites() {
 
         $("#favorite-view").append(img);
 
+    }
+
+    if(favorites.length > 0){
+        $("#favButton").show();
+        $("span").show();
     }
 }
 
